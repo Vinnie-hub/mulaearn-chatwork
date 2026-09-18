@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover" />
+  <title>Mulaearn Chatwork | Live Chats – Chat & Earn Online</title>
+  <meta name="description" content="Access Mulaearn Chatwork and earn by completing online chat tasks with international users. Start earning daily via M-Pesa." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <meta property="og:title" content="Mulaearn Chatwork | Live Chats – Chat & Earn Online" />
+  <meta property="og:description" content="Access Mulaearn Chatwork and earn by completing online chat tasks with international users" />
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dovhxt8ye/image/upload/v1789656765/mulaearn_chatwork_favicon_wyxhit.png" />
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dovhxt8ye/image/upload/v1789656765/mulaearn_chatwork_favicon_wyxhit.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="chat.css" />
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+<div class="app-container">
+  <header class="app-header">
+    <div class="header-left">
+      <a href="/" class="logo" aria-label="Mulaearn Home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <img src="https://res.cloudinary.com/dovhxt8ye/image/upload/v1789656761/Mulaern_logo_yoq0dz.png" alt="Mulaearn Logo" width="auto" height="50" />
+        </div>
+      </a>
+    </div>
+    <div class="header-right">
+      <div class="translate-badge" id="translateBtn" title="Auto-translation active">
+        <i class="fas fa-language"></i>
+        <span id="langLabel">EN</span>
+        <span class="active-dot"></span>
+      </div>
+      <div class="header-badge">
+        <span class="live-dot"></span>
+        <strong id="onlineCount">12,547</strong> online
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT matching landing page -->
+  <div class="app-content">
+    <!-- Profile Strip -->
+    <div class="profiles-strip">
+      <div class="profiles-strip-header">
+        <span class="label">
+          👋 Available Now
+          <span class="active-people">
+            <span class="mini-dot"></span>
+            <span id="activePeopleCount">1,209+</span> active
+          </span>
+        </span>
+      </div>
+      <div class="profile-scroll" id="profileScroll"></div>
+    </div>
+
+    <!-- Active People Bar -->
+    <div class="active-people-bar">
+      <div class="people-avatars" id="peopleAvatars"></div>
+      <span class="pulse-dot"></span>
+      <span class="people-text">
+        <strong id="activePeopleBar">1,209+ more people</strong> active now. Join to chat!
+      </span>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-container" id="chatContainer">
+      <!-- Chat Header -->
+      <div class="chat-header" id="chatHeader">
+        <img src="" alt="" class="ch-avatar" id="chAvatar" />
+        <div class="ch-info" id="chInfo">
+          <div class="ch-name">
+            <span id="chName">Select someone to chat</span>
+          </div>
+          <div class="ch-status" id="chStatus">
+            <span class="live-dot" style="width:5px;height:5px;"></span> online
+          </div>
+          <div class="ch-topics" id="chTopics"></div>
+        </div>
+        <div class="chat-header-actions">
+          <span class="earn-badge" id="earnDisplay">$0.00</span>
+          <button class="ch-action-btn" onclick="showToast('📞 Voice calls after registration')">
+            <i class="fas fa-phone-alt"></i>
+          </button>
+          <button class="ch-action-btn" id="sidebarToggle">
+            <i class="fas fa-comments"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="messages-area" id="messagesArea">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">💬</div>
+          <h3>Start a Conversation</h3>
+          <p>Explore the interface using sample profiles. Messages and translation are simulated.</p>
+          <div class="suggested-profiles" id="suggestedProfiles"></div>
+        </div>
+      </div>
+
+      <!-- Emoji Panel -->
+      <div class="emoji-panel" id="emojiPanel">
+        <div class="emoji-cats" id="emojiCats"></div>
+        <div class="emoji-list" id="emojiList"></div>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="input-bar">
+        <button class="tool-btn disabled" id="attachBtn" title="Attach (register to unlock)">
+          <i class="fas fa-paperclip"></i>
+        </button>
+        <button class="tool-btn disabled" id="imageBtn" title="Photos (register to unlock)">
+          <i class="fas fa-image"></i>
+        </button>
+        <input type="text" id="chatInput" placeholder="Type a message..." disabled />
+        <button class="tool-btn" id="emojiBtn"><i class="fas fa-smile"></i></button>
+        <button class="tool-btn disabled" id="voiceBtn" title="Voice (register to unlock)">
+          <i class="fas fa-microphone"></i>
+        </button>
+        <div class="voice-wave" id="voiceWave">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <button class="send-main-btn" id="sendBtn" disabled>
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Conversations Drawer -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="conversations-drawer" id="conversationsDrawer">
+  <div class="drawer-header">
+    <h3><i class="fas fa-comments" style="color: var(--teal-700);"></i> Chats</h3>
+    <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="drawer-list" id="drawerList">
+    <div style="text-align:center;color:var(--gray-500);padding:2rem;">
+      <i class="fas fa-inbox" style="font-size:1.8rem;display:block;margin-bottom:0.4rem;"></i>
+      No conversations yet
+    </div>
+  </div>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>
