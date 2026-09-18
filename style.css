@@ -233,7 +233,7 @@
       #installBtn {
         position: fixed;
         right: 20px;
-        bottom: 20px;
+        bottom: 52px;
         z-index: 9999;
         background: linear-gradient(135deg, var(--purple-600), #a855f7);
         color: white;
@@ -243,7 +243,7 @@
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: 14px;
-        display: none;
+        display: inline-flex;
         align-items: center;
         gap: 10px;
         box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
@@ -254,6 +254,7 @@
         transform: translateY(-3px);
         box-shadow: 0 12px 32px rgba(124, 58, 237, 0.5);
       }
+      #installBtn[hidden] { display: none; }
       #installBtn img {
         width: 22px;
         height: 22px;
@@ -261,6 +262,9 @@
         object-fit: contain;
         background: white;
         padding: 2px;
+      }
+      @media (max-width: 480px) {
+        #installBtn { right: 12px; bottom: 48px; padding: 10px 16px; }
       }
 
       /* Header */

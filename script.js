@@ -2,6 +2,38 @@
   // Set current year
   document.getElementById("currentYear").textContent = new Date().getFullYear();
 
+  // =============== PWA INSTALL ===============
+  const installBtn = document.getElementById("installBtn");
+  let deferredInstallPrompt = null;
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js").catch((error) => {
+        console.warn("Service worker registration failed:", error);
+      });
+    });
+  }
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    installBtn.hidden = false;
+  });
+
+  installBtn.addEventListener("click", async () => {
+    if (!deferredInstallPrompt) return;
+
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    installBtn.hidden = true;
+  });
+
+  window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    installBtn.hidden = true;
+  });
+
   // =============== LIVE COUNTERS ===============
   let onlineCount = 12547;
   let moreCount = 12247;
